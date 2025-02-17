@@ -33,7 +33,7 @@ def assert_array_almost_equal_diff(x,y,digits,err_msg=''):
     msg = '\nArrays are not almost equal'
     assert 0 in [len(numx.shape(x)),len(numx.shape(y))] \
            or (len(numx.shape(x))==len(numx.shape(y)) and \
-               numx.alltrue(numx.equal(numx.shape(x),numx.shape(y)))),\
+               numx.all(numx.equal(numx.shape(x),numx.shape(y)))),\
                msg + ' (shapes %s, %s mismatch):\n\t' \
                % (numx.shape(x),numx.shape(y)) + err_msg
     maxdiff = old_div(max(numx.ravel(abs(x-y))),\

@@ -114,7 +114,7 @@ class FANode(mdp.Node):
         if d<=300:
             scale = det(cov_mtx)**(old_div(1.,d))
         else:
-            scale = numx.product(sigma)**(old_div(1.,d))
+            scale = numx.prod(sigma)**(old_div(1.,d))
         if scale <= 0.:
             err = ("The covariance matrix of the data is singular. "
                    "Redundant dimensions need to be removed.")

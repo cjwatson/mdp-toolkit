@@ -542,14 +542,14 @@ class HLLENode(LLENode):
 
         if self.svd:
             sig, U = nongeneral_svd(W.T, range=(2, d_out+1))
-            Y = U*numx.sqrt(N)
+            Y = U*numx.sqrt(N, dtype=self.dtype)
         else:
             WW = mult(W, W.T)
             # regularizes the eigenvalues, does not change the eigenvectors:
             W_diag_idx = numx.arange(N)
             WW[W_diag_idx, W_diag_idx] += 0.01
             sig, U = symeig(WW, range=(2, self.output_dim+1), overwrite=True)
-            Y = U*numx.sqrt(N)
+            Y = U*numx.sqrt(N, dtype=self.dtype)
             del WW
         del W
 

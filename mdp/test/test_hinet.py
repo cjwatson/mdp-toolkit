@@ -517,7 +517,7 @@ def test_sfa_net(noisenode):
     flownode = mh.FlowNode(mdp.Flow([noisenode, sfa_node]))
     sfa_layer = mh.CloneLayer(flownode, switchboard.output_channels)
     flow = mdp.Flow([switchboard, sfa_layer])
-    train_gen = numx.cast['f'](numx_rand.random((3, 10, 100 * 100)))
+    train_gen = numx.asarray(numx_rand.random((3, 10, 100 * 100)), dtype='f')
     flow.train([None, train_gen])
 
 
